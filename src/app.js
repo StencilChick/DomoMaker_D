@@ -23,7 +23,7 @@ var db = mongoose.connect(dbURL, function(err) {
 var redisURL = {
 	hostname: 'localhost',
 	port: 6379
-}
+};
 var redisPASS;
 
 if (process.env.REDIS_URL) {

@@ -12,7 +12,7 @@ var requiresLogout = function(req, res, next) {
 	}
 	
 	next();
-}
+};
 
 var requiresSecure = function(req, res, next) {
 	if (req.headers['x-forwarded-proto'] != 'https') {
@@ -20,11 +20,11 @@ var requiresSecure = function(req, res, next) {
 	}
 	
 	next();
-}
+};
 
 var bypassSecure = function(req, res, next) {
 	next();
-}
+};
 
 module.exports.requiresLogin = requiresLogin;
 module.exports.requiresLogout = requiresLogout;
