@@ -62,7 +62,7 @@ app.use(favicon(__dirname + '/../client/img/favicon.png'));
 app.disable('x-powered-by');
 app.use(cookieParser());
 
-app.use(csrf());
+
 app.use(function (err, req, res, next) {
 	if (err.code !== 'EBADCSRFTOKEN') return next(err);
 	
@@ -71,6 +71,7 @@ app.use(function (err, req, res, next) {
 
 router(app);
 
+app.use(csrf());
 app.listen(port, function(err) {
 	if (err) {
 		throw err;
