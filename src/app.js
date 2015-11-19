@@ -31,6 +31,8 @@ if (process.env.REDIS_URL) {
 	redisPASS = redisURL.auth.split(':')[1];
 }
 
+console.log(redisURL.hostname);
+
 // router
 var router = require('./router.js');
 
@@ -62,13 +64,12 @@ app.use(favicon(__dirname + '/../client/img/favicon.png'));
 app.disable('x-powered-by');
 app.use(cookieParser());
 
-
+app.use(csrf());
 app.use(function (err, req, res, next) {
 	if (err.code !== 'EBADCSRFTOKEN') return next(err);
 	
 	return;
 });
-app.use(csrf());
 
 router(app);
 
