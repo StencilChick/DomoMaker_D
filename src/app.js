@@ -31,7 +31,7 @@ if (process.env.REDIS_URL) {
 	redisPASS = redisURL.auth.split(':')[1];
 }
 
-console.log(redisURL.hostname);
+console.log('host: ' + redisURL.hostname);
 
 // router
 var router = require('./router.js');
