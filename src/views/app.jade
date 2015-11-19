@@ -5,6 +5,8 @@ block body
   nav
     a(href="/login")
       img#logo(src="/assets/img/face.png", alt="face logo")
+    .navLink
+      a(href="/domoList") Domo Index
     .navlink
       a(href="/logout") Log out
   section#makeDomo
@@ -13,6 +15,8 @@ block body
       input#domoName(type="text", name="name", placeholder="Domo Name")
       label(for="age") Age: 
       input#domoAge(type="text", name="age", placeholder="Domo Age")
+      label(for="colour") Favourite Colour:
+      input#domoColour(type="text", name="colour", placeholder="Domo Favourite Colour")
       input(type="hidden", name="_csrf", value="#{csrfToken}")
       a#makeDomoSubmit(class="makeDomoSubmit", href="#") Make Domo
   section#domos
@@ -25,6 +29,7 @@ block body
           img(class="domoFace", src="assets/img/domoface.jpeg", alt="domo face")
           h3.domoName Name: #{val.name}
           h3.domoAge Age: #{val.age}
+          h3.domoColour Favourite Colour: #{val.favouriteColour}
   #domoMessage
     img#speech(src="/assets/img/speech.png", alt="speech box")
     h3

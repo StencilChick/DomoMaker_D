@@ -15,13 +15,14 @@ var makerPage = function(req, res) {
 };
 
 var makeDomo = function(req, res) {
-	if (!req.body.name || !req.body.age) {
-		return res.status(400).json({error: 'Both name and age are required!'});
+	if (!req.body.name || !req.body.age || !req.body.colour) {
+		return res.status(400).json({error: 'Both name, age, and favourite colour are required!'});
 	}
 	
 	var domoData = {
 		name: req.body.name,
 		age: req.body.age,
+		favouriteColour: req.body.colour,
 		owner: req.session.account._id
 	};
 	
@@ -37,5 +38,17 @@ var makeDomo = function(req, res) {
 	});
 };
 
+var domoList = function(req, res) {
+	Domo.DomoModel.queryAll(function(err, docs) {
+		if (err) {
+			console.log(err);
+			return res.status(400).json({error: 'An error occured'});
+		}
+		
+		res.render('domoList', { domos: docs });
+	});
+};
+
 module.exports.makerPage = makerPage;
 module.exports.make = makeDomo;
+module.exports.domoListPage = domoList;

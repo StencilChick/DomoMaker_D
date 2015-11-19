@@ -1,0 +1,22 @@
+extends ./base.jade
+block append style
+  link(rel="stylesheet", type="text/css", href="/assets/style.css")
+block body
+  nav
+    a(href="/login")
+      img#logo(src="/assets/img/face.png", alt="face logo")
+    .navlink
+      a(href="/maker") Main
+    .navlink
+      a(href="/logout") Log out
+  section#domos
+    if !domos || domos.length == 0
+      div.domo
+        h3.emptyDomo No Domos yet
+    else
+      each val in domos
+        div.domo
+          img(class="domoFace", src="assets/img/domoface.jpeg", alt="domo face")
+          h3.domoName Name: #{val.name}
+          h3.domoAge Age: #{val.age}
+          h3.domoColour Favourite Colour: #{val.favouriteColour}
