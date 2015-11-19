@@ -68,10 +68,10 @@ app.use(function (err, req, res, next) {
 	
 	return;
 });
+app.use(csrf());
 
 router(app);
 
-app.use(csrf());
 app.listen(port, function(err) {
 	if (err) {
 		throw err;
